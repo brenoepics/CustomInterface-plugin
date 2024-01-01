@@ -1,8 +1,7 @@
-# farm-plugin
+# TimeRewards Plugin
 
-interaction type = "farmable"
 
-permission = "cmd_reload_farm"
+permission = "cmd_reload_timed_rewards"
 
 pre compiled version and sqls:
-https://github.com/brenoepics/farm-plugin/tree/main/target
+https://github.com/brenoepics/TimeRewards-plugin/tree/main/target
