@@ -71,7 +71,6 @@ public class RewardsManager {
         if (reward == null) return;
 
         this.setCurrentReward(reward);
-        log.debug("[Timed-Rewards] Updated reward to {}", reward.getId());
     }
 
     public void updateClaim(THashMap<Integer, Habbo> users) {

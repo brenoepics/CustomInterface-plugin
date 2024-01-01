@@ -41,7 +41,7 @@ public class RewardItem {
         if(this.itemId > 0) {
             Item item = Emulator.getGameEnvironment().getItemManager().getItem(this.itemId);
             if (item != null) {
-                return Emulator.getTexts().getValue("timed_rewards.reward_message_item").replace("%item_name%", item.getName());
+                return Emulator.getTexts().getValue("timed_rewards.reward_message_item").replace("%item_name%", item.getFullName());
             }
         }
 

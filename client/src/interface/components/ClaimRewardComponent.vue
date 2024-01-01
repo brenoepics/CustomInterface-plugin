@@ -1,9 +1,9 @@
 <template>
-    <div class="reward-box">
-        <div class="message">{{ rewards.message }}</div>
-        <div class="buttons">
-            <button class="button button-success" @click="buttonClick(true)">Accept</button>
-            <button class="button" @click="buttonClick(false)">Refuse</button>
+    <div class="habbo-reward-box">
+        <div class="habbo-message">{{ rewards.message }}</div>
+        <div class="habbo-buttons">
+            <button class="habbo-button habbo-button-success" @click="buttonClick(true)">Accept</button>
+            <button class="habbo-button" @click="buttonClick(false)">Refuse</button>
         </div>
     </div>
   </template>
@@ -39,41 +39,39 @@
   </script>
   
   <style lang="scss" scoped>
-    .reward-box {
+    .habbo-reward-box {
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 400px;
-      height: 65px;
+      height: 70px;
       position: absolute;
       z-index: 1000;
       left: 50%; transform: translateX(-50%);
       top: 0;
-      border-image-slice: 33 7 8 7 fill;
-      border-image-source: url("~@/assets/body.png");
-      border-image-repeat: repeat repeat;
-      border-image-width: 0px 7px 8px 7px;
-      color: #000;
-      padding: 7px;
+      color: #fff;
+      padding: 5px;
+      border: 1px solid rgba(0,0,0,0.29); border-radius: 6px; background: rgba(46,46,44,0.66); box-shadow: inset 0 0 0 2px #fff3; 
       gap: 6%;
 
-    .message {
-        color: #000;
+    .habbo-message {
+        color: #fff;
         font-size: 15px;
         font-weight: bold;
         font-family: ubuntuBold, ubuntu, sans-serif;
     }
 
-    .buttons {
+    .habbo-buttons {
         display:flex;
         flex-direction:row;
         gap: 3%;
         justify-content: center;
 
-        .button {
+        .habbo-button {
             border-image-source: url("~@/assets/button.png");
             border-image-slice: 4 4 4 4 fill;
             border-image-width: 4px 4px 4px 4px;
+            border-radius:4px;
             padding: .375rem .75rem;
             min-height: 22px;
             color: #000;
@@ -89,7 +87,7 @@
             }
         }
 
-        .button-success {
+        .habbo-button-success {
             border-image-source: url("~@/assets/button_success.png");
             color: #fff;
             font-family: ubuntuBold, ubuntu, sans-serif;
