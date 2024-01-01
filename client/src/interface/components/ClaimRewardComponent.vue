@@ -3,7 +3,7 @@
         <div class="habbo-message">{{ rewards.message }}</div>
         <div class="habbo-buttons">
             <button class="habbo-button habbo-button-success" @click="buttonClick(true)">Accept</button>
-            <button class="habbo-button" @click="buttonClick(false)">Refuse</button>
+            <button class="habbo-button" @click="buttonClick(false)">Decline</button>
         </div>
     </div>
   </template>
