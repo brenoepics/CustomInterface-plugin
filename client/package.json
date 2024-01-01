@@ -1,0 +1,33 @@
+{
+  "name": "youtube-overlay",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "axios": "^0.21.2",
+    "core-js": "^3.7.0",
+    "draggable-vue-directive": "^2.1.0",
+    "vue": "^2.6.12",
+    "vue-class-component": "^7.2.6",
+    "vuex": "^3.5.1",
+    "vuex-class": "^0.3.2",
+    "youtube-player": "^5.5.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-plugin-typescript": "^5.0.8",
+    "@vue/cli-service": "^5.0.8",
+    "sass": "^1.29.0",
+    "sass-loader": "^13.2.0",
+    "typescript": "^4.8.4",
+    "vue-template-compiler": "^2.6.12",
+    "@types/youtube-player": "^5.5.3"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}
