@@ -24,5 +24,6 @@ logging
 
 src/main/resources/*jar
 client/node_modules/
+client/public/index.html
 
 lib/*jar
