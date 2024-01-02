@@ -18,6 +18,7 @@ public class ReloadRewardsCommand extends Command {
     public boolean handle(GameClient gameClient, String[] params) {
         boolean loaded = TimedRewards.getRewardsManager().load();
         gameClient.getHabbo().whisper(Emulator.getTexts().getValue(loaded ? SUCCESS : ERROR));
+        TimedRewards.getRewardScheduler().reloadConfig();
         return true;
     }
 }

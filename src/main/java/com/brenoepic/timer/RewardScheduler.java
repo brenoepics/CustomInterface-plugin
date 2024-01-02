@@ -9,13 +9,9 @@ import com.eu.habbo.core.Scheduler;
 import com.eu.habbo.habbohotel.users.Habbo;
 import gnu.trove.map.hash.THashMap;
 
-import java.sql.Time;
-
 public class RewardScheduler extends Scheduler {
-
     private boolean ignoreHotelView;
     private boolean ignoreIdled;
-    private double hcModifier;
 
     public RewardScheduler() {
         super(Emulator.getConfig().getInt("hotel.auto.rewards.interval"));
@@ -24,10 +20,9 @@ public class RewardScheduler extends Scheduler {
 
     public void reloadConfig() {
         if (Emulator.getConfig().getBoolean("hotel.auto.rewards.enabled", true)) {
+            interval = Emulator.getConfig().getInt("hotel.auto.rewards.interval");
             ignoreHotelView = Emulator.getConfig().getBoolean("hotel.auto.rewards.ignore.hotelview");
             ignoreIdled = Emulator.getConfig().getBoolean("hotel.auto.rewards.ignore.idled");
-            hcModifier = Emulator.getConfig().getDouble("hotel.auto.rewards.hc_modifier", 1.0);
-
             if (this.disposed) {
                 this.disposed = false;
                 this.run();
@@ -39,7 +34,8 @@ public class RewardScheduler extends Scheduler {
 
     @Override
     public void run() {
-        super.run();
+        reloadConfig();
+
         THashMap<Integer, Habbo> canClaim = new THashMap<>();
         TimedRewards.getRewardsManager().updateReward();
         RewardItem rewardItem = TimedRewards.getRewardsManager().getCurrentReward();
@@ -51,6 +47,7 @@ public class RewardScheduler extends Scheduler {
 
         TimedRewards.getRewardsManager().updateClaim(canClaim);
 
+        super.run();
     }
 
     private boolean alertUser(Habbo habbo, RewardItem item) {
