@@ -20,10 +20,11 @@ import TwitchVideoEvent from './incoming/youtube/TwitchVideoEvent';
 import PingEvent from './incoming/general/PingEvent';
 import SSOTicketComposer from './outgoing/general/SSOTicketComposer';
 import RewardAvailableEvent from './incoming/general/RewardAvailableEvent';
+import RaresValueEvent from './incoming/general/RaresValueEvent';
 
 export default class CommunicationManager {
     private _webSocket?: WebSocket;
-    private _events : Map<String, IncomingMessage>;
+    private _events : Map<string, IncomingMessage>;
     private _mode?: CommunicationType;
     private _sso?: string;
     private _wsUrl?: string;
@@ -50,31 +51,24 @@ export default class CommunicationManager {
         this._events.set("dispose_playlist", new DisposePlaylistEvent());
         this._events.set("twitch", new TwitchVideoEvent());
         this._events.set("reward_available", new RewardAvailableEvent());
+        this._events.set("rare_values", new RaresValueEvent());
     }
 
     public sendMessage(message: OutgoingMessage): void {
         if (!App.interfaceManager.container.$store.state.connected || !message)
             return;
-        if(this._mode === CommunicationType.WebSocket) {
-            if (!this._webSocket || this._webSocket.readyState != WebSocket.OPEN) return;
-            this._webSocket.send(JSON.stringify(message));
-        } else if(this._mode === CommunicationType.IFrameExternalFlashInterface) {
+        if(this._mode === CommunicationType.IFrameExternalFlashInterface) {
             let frame: any = document.getElementById('nitro');
-            if(frame != null && frame.contentWindow) frame.contentWindow.openroom(JSON.stringify(message));
+            if(frame?.contentWindow) frame.contentWindow.openroom(JSON.stringify(message));
             else (window as any).openroom(JSON.stringify(message));
         } else {
-            let swfObject: any = document.querySelector('object, embed') as any;
+            let swfObject: any = document.querySelector('object, embed');
             if(swfObject) swfObject.openroom(JSON.stringify(message));
         }
     }
 
     public onMessage(message: string | MessageEvent): void {
-        let json: any;
-        if (typeof message === 'string' || message instanceof String) {
-            json = JSON.parse(message.replace(/&#47;/g, "/"));
-        } else {
-            json = JSON.parse(message.data);
-        }
+        let json: any = (typeof message === 'string' || message instanceof String) ? JSON.parse(message.replace(/&#47;/g, "/")) : JSON.parse(message.data);
         let parser = this._events.get(json.header);
         if(parser) parser.parse(json.data);
         else Logger.Log(json);
@@ -108,7 +102,7 @@ export default class CommunicationManager {
         this._webSocket.onerror = this.onError;
     }
 
-    public get events(): Map<String, IncomingMessage> {
+    public get events(): Map<string, IncomingMessage> {
         return this._events;
     }
 

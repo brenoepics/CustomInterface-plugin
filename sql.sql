@@ -14,3 +14,4 @@ CREATE TABLE IF NOT EXISTS `items_timed_rewards` (
 INSERT INTO `achievements` (`name`, `category`, `reward_amount`, `points`) VALUES ('TimedReward', 'events', 0, 0);
 
 ALTER TABLE `permissions` ADD COLUMN `cmd_reload_timed_rewards` ENUM('0','1') NOT NULL DEFAULT '0';
+ALTER TABLE `permissions` ADD COLUMN `cmd_rare_value` ENUM('0','1') NOT NULL DEFAULT '1';

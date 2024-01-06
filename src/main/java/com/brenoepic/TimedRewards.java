@@ -4,6 +4,7 @@ import com.brenoepic.commands.ReloadRewardsCommand;
 import com.brenoepic.javascript.JSPlugin;
 import com.brenoepic.javascript.audio.RoomPlaylist;
 import com.brenoepic.javascript.commands.CmdCommand;
+import com.brenoepic.javascript.commands.RareValueCommand;
 import com.brenoepic.javascript.commands.YoutubeCommand;
 import com.brenoepic.javascript.communication.outgoing.audio.DisposePlaylistComposer;
 import com.brenoepic.javascript.communication.outgoing.audio.PlaySongComposer;
@@ -15,6 +16,7 @@ import com.brenoepic.javascript.interactions.InteractionSlotMachine;
 import com.brenoepic.javascript.interactions.InteractionYoutubeJukebox;
 import com.brenoepic.javascript.override_packets.incoming.JavascriptCallbackEvent;
 import com.brenoepic.javascript.override_packets.outgoing.JavascriptCallbackComposer;
+import com.brenoepic.rarevalue.RareValueManager;
 import com.brenoepic.rewards.RewardsManager;
 import com.brenoepic.timer.RewardScheduler;
 import com.eu.habbo.Emulator;
@@ -44,6 +46,8 @@ public class TimedRewards extends HabboPlugin implements EventListener {
     @Getter
     public static final RewardScheduler rewardScheduler = new RewardScheduler();
 
+    @Getter
+    public static final RareValueManager rareValueManager = new RareValueManager();
     public void onEnable() {
         Emulator.getPluginManager().registerEvents(this, this);
     }
@@ -89,19 +93,19 @@ public class TimedRewards extends HabboPlugin implements EventListener {
         Emulator.getTexts().register("commands.keys.cmd_reload_timed_rewards", "update_rewards;reloadrewards");
         Emulator.getTexts().register("commands.description.cmd_reload_timed_rewards", ":update_rewards");
         Emulator.getTexts().register("timed_rewards.reward_expired", "This reward has expired!");
-
         Emulator.getTexts().register("timed_rewards.reward_message_points", "You have %amount% points available!");
         Emulator.getTexts().register("timed_rewards.reward_message_duckets", "You have %amount% duckets available!");
         Emulator.getTexts().register("timed_rewards.reward_message_credits", "You have %amount% credits available!");
         Emulator.getTexts().register("timed_rewards.reward_message_badge", "You have the badge %badge% available!");
         Emulator.getTexts().register("timed_rewards.reward_message_item", "You have the item %item_name% available!");
         Emulator.getTexts().register("timed_rewards.reward_message", "You have an available reward!");
+        Emulator.getTexts().register("commands.keys.cmd_rare_value", "rare_value");
     }
 
     private void registerCommands() {
         CommandHandler.addCommand(new YoutubeCommand());
         CommandHandler.addCommand(new ReloadRewardsCommand("cmd_reload_timed_rewards", Emulator.getTexts().getValue("commands.keys.cmd_reload_timed_rewards").split(";")));
-
+        CommandHandler.addCommand(new RareValueCommand("cmd_rare_value", Emulator.getTexts().getValue("commands.keys.cmd_rare_value").split(";")));
         if (Emulator.getConfig().getBoolean("javascript.cmd.commands.enabled", true)) {
             CommandHandler.addCommand(new CmdCommand());
         }

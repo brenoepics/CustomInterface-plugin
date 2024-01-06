@@ -1,6 +1,7 @@
 import Song from './models/Song';
 import SlotItem from './models/SlotItem'
 import User from './models/User';
+import { Rare } from './models/Rare';
 
 export interface RootState {
   connected: boolean;
@@ -9,7 +10,7 @@ export interface RootState {
 export interface SlotMachineState {
   results: number[];
   open: boolean;
-  audio: Map<String, HTMLAudioElement>;
+  audio: Map<string, HTMLAudioElement>;
   isSpinning: boolean;
   won: boolean;
   items: SlotItem[];
@@ -26,6 +27,12 @@ export interface RewardsState {
   message: string;
   closesIn: number;
   open: boolean;
+}
+
+export interface RareValuesState {
+  open: boolean;
+  categories: string[];
+  rares: Rare[];
 }
 export interface SessionState {
   user: User;

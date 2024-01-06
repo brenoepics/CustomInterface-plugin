@@ -13,6 +13,9 @@ public class JavascriptCallbackComposer extends MessageComposer {
         this.webMessage = message;
     }
 
+    public static JavascriptCallbackComposer ofMessage(OutgoingWebMessage message) {
+        return new JavascriptCallbackComposer(message);
+    }
     @Override
     protected ServerMessage composeInternal() {
         this.response.init(Outgoing.NuxAlertComposer);

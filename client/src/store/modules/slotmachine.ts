@@ -5,7 +5,7 @@ import { Module, MutationTree } from 'vuex';
 const state : SlotMachineState = {
   results: [],
   open: false,
-  audio: new Map<String, HTMLAudioElement>(),
+  audio: new Map<string, HTMLAudioElement>(),
   isSpinning: false,
   won: false,
   items: [

@@ -8,6 +8,7 @@ import { slotmachine } from './modules/slotmachine';
 import { youtubeplayer } from './modules/youtubeplayer';
 import { twitchplayer } from './modules/twitchplayer';
 import { rewards } from './modules/rewards';
+import { rarevalues } from './modules/rarevalues';
 
 Vue.use(Vuex);
 
@@ -23,7 +24,8 @@ const store: StoreOptions<RootState>  = {
         slotmachine,
         youtubeplayer,
         twitchplayer,
-        rewards
+        rewards,
+        rarevalues
     },
 
     mutations: {
