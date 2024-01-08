@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'client/**'
+      - '.github/**'
 
 jobs:
   build_and_test:
