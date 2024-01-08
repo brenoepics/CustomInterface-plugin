@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'client/**'
+      - '.github/**'
 
 jobs:
   build_and_test:
@@ -16,7 +17,7 @@ jobs:
       - name: yarn install, build
         working-directory: ./client
         run: |
-          npm install -g Yarn
+          npm install -g yarn
           yarn install
           git mv public/index.html.example public/index.html
           yarn run build --if-present
