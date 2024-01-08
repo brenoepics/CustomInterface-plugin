@@ -1,7 +1,7 @@
 import store from '@/store/Store';
 import Vue from 'vue'
 import App from './App.vue'
-
+import { DraggablePlugin } from '@braks/revue-draggable';
 export default class InterfaceManager {
     private _container?: Vue;
     private _bus: Vue;
@@ -14,6 +14,7 @@ export default class InterfaceManager {
     }
 
     public initInterface(): void {
+        Vue.use(DraggablePlugin);
         this._container = new Vue({
             store,
             render: h => h(App)
