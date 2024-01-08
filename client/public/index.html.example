@@ -5,19 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>youtube-overlay</title>
+    <title>custom-interface</title>
 
   </head>
   <body>
     <noscript>
-      <strong>We're sorry but youtube-overlay doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong>We're sorry but custom-interface doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
     <div id="root" class="w-100 h-100"></div>
     <script>
       const ExternalConfig = {
-            "currencies": "http://127.0.0.1:8083/images/wallet/%currency%.png",
-            "items": "http://127.0.0.1:8083/furniture/icons/%code%_icon.png",
+            "currencies": "/images/wallet/%currency%.png",
+            "items": "/furniture/icons/%code%_icon.png",
           };
     </script>
     <!-- built files will be auto injected -->
