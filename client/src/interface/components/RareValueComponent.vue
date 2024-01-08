@@ -1,5 +1,5 @@
 <template>
-  <Draggable
+  <DragAble
     :default-position="{ x: cardStyle('x'), y: cardStyle('y') }"
     handle=".rare-value-header"
     class="rare-value-component"
@@ -104,7 +104,7 @@
         </div>
       </div>
     </div>
-  </Draggable>
+  </DragAble>
 </template>
 
 <script lang="ts">
