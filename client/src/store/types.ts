@@ -1,7 +1,8 @@
 import Song from './models/Song';
 import SlotItem from './models/SlotItem'
 import User from './models/User';
-import { Rare } from './models/Rare';
+import Rare from './models/Rare';
+import RareCategory from './models/RareCategory';
 
 export interface RootState {
   connected: boolean;
@@ -31,8 +32,11 @@ export interface RewardsState {
 
 export interface RareValuesState {
   open: boolean;
-  categories: string[];
+  categories: RareCategory[];
   rares: Rare[];
+  owned: number[];
+  frontpage: string;
+  errors: string[];
 }
 export interface SessionState {
   user: User;

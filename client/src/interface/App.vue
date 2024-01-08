@@ -3,6 +3,7 @@
     <transition name="slide-down">
       <ClaimRewardComponent v-if="rewards.open"/>
     </transition>
+    <RareValueComponent v-if="rarevalue.open"/>
   </div>
 </template>
 
@@ -11,16 +12,21 @@ import Component from "vue-class-component";
 
 import Vue from "vue";
 import { State } from 'vuex-class';
-import { RewardsState } from '@/store/types';
+import { RareValuesState, RewardsState } from '@/store/types';
 import ClaimRewardComponent from "./components/ClaimRewardComponent.vue";
+import RareValueComponent from "./components/RareValueComponent.vue";
 
 @Component({
   components: {
     ClaimRewardComponent,
+    RareValueComponent
   },
 })
 export default class App extends Vue {
   @State(state => state.rewards) rewards!: RewardsState;
+  @State(state => state.rarevalues) rarevalue!: RareValuesState;
+
+
 }
 </script>
 
