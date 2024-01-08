@@ -2,7 +2,14 @@
   "name": "youtube-overlay",
   "version": "0.1.0",
   "private": true,
+  "husky": {
+  "hooks": {
+    "pre-commit": "yarn run lint:fix",
+    "prepush": "yarn run lint",
+  }
+},
   "scripts": {
+    "prepare": "cd .. && husky install client/.husky",
     "serve": "vue-cli-service serve",
     "lint": "eslint \"**/*.{ts,vue}\"",
     "lint:fix": "eslint \"**/*.{ts,vue}\" --fix",
@@ -31,6 +38,7 @@
     "eslint": "^8.56.0",
     "eslint-plugin-prettier": "5.0.0",
     "eslint-plugin-vue": "^9.19.2",
+    "husky": "^8.0.3",
     "prettier": "^3.1.1",
     "sass": "^1.29.0",
     "sass-loader": "^13.2.0",
