@@ -110,7 +110,7 @@
         }
 
         getTabs(): RareCategory[] {
-            return this.rarevalues.categories.sort((a, b) => a.id - b.id);
+            return this.rarevalues.categories;
         }
 
         getCurrentTab(): RareCategory {

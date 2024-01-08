@@ -16,7 +16,7 @@ const namespaced: boolean = true;
 
 const mutations: MutationTree<RareValuesState> = {
   setCategories(state, categories: RareCategory[]) {
-    state.categories = categories;
+    state.categories = categories.sort((a, b) => a.id - b.id);
   },
   setRares(state, rares: Rare[]) {
     state.rares = rares;
