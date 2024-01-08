@@ -1,12 +1,12 @@
-import OutgoingMessage from '../OutgoingMessage';
+import OutgoingMessage from "../OutgoingMessage";
 
 export default class PongComposer implements OutgoingMessage {
-  header: string = "pong";    
+  header: string = "pong";
   data: any;
-  
+
   constructor() {
-      this.data = {
-          "message": ""
-      };
+    this.data = {
+      message: "",
+    };
   }
 }

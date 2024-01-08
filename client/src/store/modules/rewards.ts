@@ -1,11 +1,11 @@
-import { Module, MutationTree } from 'vuex';
-import { RewardsState, RootState } from './../types';
+import { Module, MutationTree } from "vuex";
+import { RewardsState, RootState } from "./../types";
 
 const state: RewardsState = {
-  message: 'Loading...',
+  message: "Loading...",
   closesIn: Date.now(),
-  open: false
-}
+  open: false,
+};
 
 const namespaced: boolean = true;
 
@@ -14,16 +14,16 @@ const mutations: MutationTree<RewardsState> = {
     state.message = message;
   },
   setClosesIn(state, closesIn: number) {
-    const ms = Date.now() + (closesIn * 1000);
+    const ms = Date.now() + closesIn * 1000;
     state.closesIn = ms;
   },
   setOpen(state, open: boolean) {
     state.open = open;
-  }
-}
+  },
+};
 
 export const rewards: Module<RewardsState, RootState> = {
   namespaced,
   state,
-  mutations
-}
+  mutations,
+};

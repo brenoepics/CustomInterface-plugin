@@ -1,12 +1,12 @@
-import { Module, MutationTree } from 'vuex';
-import { YoutubePlayerState, RootState } from './../types';
+import { Module, MutationTree } from "vuex";
+import { YoutubePlayerState, RootState } from "./../types";
 
 const state: YoutubePlayerState = {
   open: false,
   editMode: false,
   videoId: "",
-  itemId: 0
-}
+  itemId: 0,
+};
 
 const namespaced: boolean = true;
 
@@ -22,11 +22,11 @@ const mutations: MutationTree<YoutubePlayerState> = {
   },
   setItemId(state, itemId: number) {
     state.itemId = itemId;
-  }
-}
+  },
+};
 
 export const youtubeplayer: Module<YoutubePlayerState, RootState> = {
   namespaced,
   state,
-  mutations
-}
+  mutations,
+};

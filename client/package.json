@@ -2,12 +2,25 @@
   "name": "youtube-overlay",
   "version": "0.1.0",
   "private": true,
+  "husky": {
+  "hooks": {
+    "pre-commit": "yarn run lint:fix",
+    "prepush": "yarn run lint"
+  }
+},
   "scripts": {
+    "prepare": "cd .. && husky install client/.husky",
     "serve": "vue-cli-service serve",
+    "lint": "eslint \"**/*.{ts,vue}\"",
+    "lint:fix": "eslint \"**/*.{ts,vue}\" --fix",
     "build": "vue-cli-service build"
   },
   "dependencies": {
     "@braks/revue-draggable": "^0.4.3",
+    "@rushstack/eslint-patch": "^1.6.1",
+    "@vue/composition-api": "^1.7.2",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "@vue/eslint-config-typescript": "^12.0.0",
     "axios": "^0.21.2",
     "core-js": "^3.7.0",
     "draggable-vue-directive": "^2.1.0",
@@ -17,9 +30,16 @@
     "vuex-class": "^0.3.2"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.18.0",
+    "@typescript-eslint/parser": "^6.18.0",
     "@vue/cli-plugin-babel": "^5.0.8",
     "@vue/cli-plugin-typescript": "^5.0.8",
     "@vue/cli-service": "^5.0.8",
+    "eslint": "^8.56.0",
+    "eslint-plugin-prettier": "5.0.0",
+    "eslint-plugin-vue": "^9.19.2",
+    "husky": "^8.0.3",
+    "prettier": "^3.1.1",
     "sass": "^1.29.0",
     "sass-loader": "^13.2.0",
     "typescript": "^4.8.4",

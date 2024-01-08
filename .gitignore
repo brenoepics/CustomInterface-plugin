@@ -28,3 +28,4 @@ client/public/index.html
 
 lib/*jar
 client/package-lock.json
+client/yarn-error.log

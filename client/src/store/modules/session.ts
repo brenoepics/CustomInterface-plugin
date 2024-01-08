@@ -1,11 +1,11 @@
-import { SessionState, RootState } from './../types';
-import User from '../models/User';
-import { Module, MutationTree } from 'vuex';
+import { SessionState, RootState } from "./../types";
+import User from "../models/User";
+import { Module, MutationTree } from "vuex";
 
 const state: SessionState = {
   user: new User(),
-  credits: 0
-}
+  credits: 0,
+};
 
 const namespaced: boolean = true;
 
@@ -24,11 +24,11 @@ const mutations: MutationTree<SessionState> = {
   },
   setId(state, id: number) {
     state.user.id = id;
-  }
-}
+  },
+};
 
 export const session: Module<SessionState, RootState> = {
   namespaced,
   state,
-  mutations 
-}
+  mutations,
+};
