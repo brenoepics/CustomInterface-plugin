@@ -27,3 +27,4 @@ client/node_modules/
 client/public/index.html
 
 lib/*jar
+client/package-lock.json
