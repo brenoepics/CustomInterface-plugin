@@ -5,7 +5,7 @@
   "husky": {
   "hooks": {
     "pre-commit": "yarn run lint:fix",
-    "prepush": "yarn run lint",
+    "prepush": "yarn run lint"
   }
 },
   "scripts": {
