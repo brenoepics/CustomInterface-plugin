@@ -1,9 +1,9 @@
 export default class RareCategory {
-    public id: number;
-    public name: string;
-   
-    constructor(id: number, name: string) {
-        this.id = id;
-        this.name = name;
-    }
+  public id: number;
+  public name: string;
+
+  constructor(id: number, name: string) {
+    this.id = id;
+    this.name = name;
+  }
 }

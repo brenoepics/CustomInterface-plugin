@@ -4,8 +4,8 @@ export default class SlotItem {
   public image: string;
 
   constructor(name: string, value: number, image: string) {
-      this.name = name;
-      this.value = value;
-      this.image = image;
+    this.name = name;
+    this.value = value;
+    this.image = image;
   }
 }

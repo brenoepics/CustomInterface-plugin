@@ -1,13 +1,13 @@
-import { Module, MutationTree } from 'vuex';
-import { JukeboxState, RootState } from './../types';
-import Song from '@/store/models/Song';
+import { Module, MutationTree } from "vuex";
+import { JukeboxState, RootState } from "./../types";
+import Song from "@/store/models/Song";
 
 const state: JukeboxState = {
   open: false,
   playing: false,
   playlist: [],
-  currentIndex: 0
-}
+  currentIndex: 0,
+};
 
 const namespaced: boolean = true;
 
@@ -35,11 +35,11 @@ const mutations: MutationTree<JukeboxState> = {
   },
   decrementIndex(state) {
     state.currentIndex--;
-  }
-}
+  },
+};
 
 export const jukebox: Module<JukeboxState, RootState> = {
   namespaced,
   state,
-  mutations
-}
+  mutations,
+};

@@ -1,14 +1,16 @@
-import IncomingMessage from '../IncomingMessage';
-import App from '@/App';
+import IncomingMessage from "../IncomingMessage";
+import App from "@/App";
 
-export default class TwitchVideoEvent implements IncomingMessage{
-    parse(data: any): void {
-        let channel = data.videoId;
+export default class TwitchVideoEvent implements IncomingMessage {
+  parse(data: any): void {
+    const channel = data.videoId;
 
-        if(channel == "")
-            return;
+    if (channel == "") return;
 
-        App.interfaceManager.container.$store.commit('twitchplayer/setChannel', channel);
-        App.interfaceManager.container.$store.commit('twitchplayer/setOpen', true);
-    }
+    App.interfaceManager.container.$store.commit(
+      "twitchplayer/setChannel",
+      channel,
+    );
+    App.interfaceManager.container.$store.commit("twitchplayer/setOpen", true);
+  }
 }

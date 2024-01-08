@@ -1,3 +1,3 @@
 export default interface Interaction {
-    enabled: boolean;
+  enabled: boolean;
 }

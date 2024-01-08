@@ -1,6 +1,6 @@
-import InterfaceManager from '@/interface/InterfaceManager';
-import CommunicationManager from '@/communication/CommunicationManager';
-import InteractionManager from '@/interaction/InteractionManager';
+import InterfaceManager from "@/interface/InterfaceManager";
+import CommunicationManager from "@/communication/CommunicationManager";
+import InteractionManager from "@/interaction/InteractionManager";
 
 export default class App {
   private static _interfaceManager: InterfaceManager;
@@ -13,15 +13,15 @@ export default class App {
     App._interactionManager = new InteractionManager();
   }
 
-  public static get interfaceManager() : InterfaceManager {
+  public static get interfaceManager(): InterfaceManager {
     return App._interfaceManager;
   }
 
-  public static get communicationManager() : CommunicationManager {
+  public static get communicationManager(): CommunicationManager {
     return App._communicationManager;
   }
 
-  public static get interactionManager() : InteractionManager {
+  public static get interactionManager(): InteractionManager {
     return App._interactionManager;
   }
 }
