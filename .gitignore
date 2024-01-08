@@ -20,7 +20,7 @@ buildNumber.properties
 .vscode
 logging
 .idea
-
+*.iml
 
 src/main/resources/*jar
 client/node_modules/
