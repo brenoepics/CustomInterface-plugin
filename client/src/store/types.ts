@@ -41,6 +41,7 @@ export interface RareValuesState {
 export interface SessionState {
   user: User;
   credits: number;
+  loaded: boolean;
 }
 
 export interface YoutubePlayerState {

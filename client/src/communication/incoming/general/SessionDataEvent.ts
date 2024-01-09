@@ -13,5 +13,6 @@ export default class SessionDataEvent implements IncomingMessage {
       data.username,
     );
     App.interfaceManager.container.$store.commit("session/setLook", data.look);
+    App.interfaceManager.container.$store.commit("session/setLoaded", true);
   }
 }

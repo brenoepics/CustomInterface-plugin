@@ -4,7 +4,7 @@
       <ClaimRewardComponent v-if="rewards.open" />
     </transition>
     <RareValueComponent v-if="rarevalue.open" />
-    <Menu />
+    <Menu v-if="session.loaded" />
   </div>
 </template>
 
@@ -13,7 +13,7 @@ import Component from "vue-class-component";
 
 import Vue from "vue";
 import { State } from "vuex-class";
-import { RareValuesState, RewardsState } from "@/store/types";
+import { RareValuesState, RewardsState, SessionState } from "@/store/types";
 import ClaimRewardComponent from "./components/ClaimRewardComponent.vue";
 import RareValueComponent from "./components/RareValueComponent.vue";
 import Menu from "./components/Menu.vue";
@@ -28,6 +28,7 @@ import Menu from "./components/Menu.vue";
 export default class App extends Vue {
   @State((state) => state.rewards) rewards!: RewardsState;
   @State((state) => state.rarevalues) rarevalue!: RareValuesState;
+  @State('session') session!: SessionState;
 }
 </script>
 

@@ -3,6 +3,7 @@ import User from "../models/User";
 import { Module, MutationTree } from "vuex";
 
 const state: SessionState = {
+  loaded: false,
   user: new User(),
   credits: 0,
 };
@@ -10,6 +11,9 @@ const state: SessionState = {
 const namespaced: boolean = true;
 
 const mutations: MutationTree<SessionState> = {
+  setLoaded(state, loaded: boolean) {
+    state.loaded = loaded;
+  },
   setUsername(state, val: string) {
     state.user.username = val;
   },

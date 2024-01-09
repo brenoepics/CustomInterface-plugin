@@ -142,15 +142,9 @@ public class Main extends HabboPlugin implements EventListener {
 
     @EventHandler
     public void onUserEnterRoomEvent(UserEnterRoomEvent e) {
-        RoomPlaylist playlist = JSPlugin.getInstance().getRoomAudioManager().getPlaylistForRoom(e.room.getId());
-        // here send the playlist to the user
-        if (!playlist.getPlaylist().isEmpty()) {
-            e.habbo.getClient().sendResponse(new JavascriptCallbackComposer(new PlaylistComposer(playlist)));
-            if (playlist.isPlaying()) {
-                e.habbo.getClient().sendResponse(new JavascriptCallbackComposer(new PlaySongComposer(playlist.getCurrentIndex())));
-                e.habbo.getClient().sendResponse(playlist.getNowPlayingBubbleAlert());
-            }
-        }
+        if(e.habbo == null) return;
+
+        sendSessionData(e.habbo).run();
     }
 
     @EventHandler
@@ -167,8 +161,17 @@ public class Main extends HabboPlugin implements EventListener {
 
     @EventHandler
     public void onUserLoginEvent(UserLoginEvent e) {
-        SessionDataComposer sessionDataComposer = new SessionDataComposer(e.habbo.getHabboInfo().getId(), e.habbo.getHabboInfo().getUsername(), e.habbo.getHabboInfo().getLook(), e.habbo.getHabboInfo().getCredits());
-        e.habbo.getClient().sendResponse(new JavascriptCallbackComposer(sessionDataComposer));
+        if(e.habbo == null) return;
+
+        Emulator.getThreading().run(sendSessionData(e.habbo), 2000);
+    }
+
+    private Runnable sendSessionData(Habbo habbo) {
+        return () -> {
+            if(habbo == null) return;
+            SessionDataComposer sessionDataComposer = new SessionDataComposer(habbo.getHabboInfo().getId(), habbo.getHabboInfo().getUsername(), habbo.getHabboInfo().getLook(), habbo.getHabboInfo().getCredits());
+            habbo.getClient().sendResponse(new JavascriptCallbackComposer(sessionDataComposer));
+        };
     }
 
     @EventHandler
