@@ -5,13 +5,13 @@
     class="rare-value-component"
   >
     <div class="rare-value-header">
-      <span class="rare-value-title">Rare Value</span>
+      <span class="rare-value-title">HabPlace Economy</span>
       <div class="box_cross" @click="close"></div>
     </div>
     <div class="rare-value-tabs"></div>
     <div class="rare-value-list">
       <div class="rare-value-details">
-        <div class="rare-value-left">
+        <div :class="'rare-value-left ' + (getCurrentTab().id === -3 ? 'rare-value-width' : '')">
           <div class="rare-value-manage">
             <select
               v-model="selectedTab"
@@ -46,7 +46,7 @@
             v-html="rarevalues.frontpage"
           ></div>
         </div>
-        <div class="rare-value-item-clicked">
+        <div v-if="getCurrentTab().id !== -3" class="rare-value-item-clicked">
           <div class="rare-value-item-clicked-preview">
             <div
               v-if="
@@ -204,6 +204,13 @@ export default class RareValueComponent extends Vue {
   }
 
   setTab(tab: number) {
+    if(this.getTabSize(tab) > 0) {
+      const firstItem = this.getTabItems(tab)[0];
+      if(firstItem) {
+        this.selectedItem = firstItem;
+      }
+    }
+    
     this.selectedTab = tab;
   }
 
@@ -356,10 +363,8 @@ export default class RareValueComponent extends Vue {
             height: 100%;
             background-image: url("~@/assets/place-holder.png");
             background-position: center;
-            background-size: contain;
             background-repeat: no-repeat;
             image-rendering: pixelated;
-            scale: 0.5;
           }
         }
       }
@@ -426,11 +431,16 @@ export default class RareValueComponent extends Vue {
       background-repeat: no-repeat;
     }
   }
+  
   .rare-value-left {
     display: flex;
     flex-direction: column;
     height: 170px;
     width: 70%;
+
+    &.rare-value-width {
+    width: 100%;
+  }
     .rare-value-manage {
       height: 25px;
       width: 100%;
