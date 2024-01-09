@@ -25,6 +25,7 @@ src/main/resources/*jar
 client/node_modules/
 client/public/index.html
 client/public/index.html.example
+client/dist
 
 lib/*jar
 client/package-lock.json
