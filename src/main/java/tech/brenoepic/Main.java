@@ -1,10 +1,11 @@
 package tech.brenoepic;
 
+import tech.brenoepic.commands.ReloadRareValueCommand;
 import tech.brenoepic.commands.ReloadRewardsCommand;
 import tech.brenoepic.javascript.JSPlugin;
 import tech.brenoepic.javascript.audio.RoomPlaylist;
 import tech.brenoepic.javascript.commands.CmdCommand;
-import tech.brenoepic.javascript.commands.RareValueCommand;
+import tech.brenoepic.commands.RareValueCommand;
 import tech.brenoepic.javascript.commands.YoutubeCommand;
 import tech.brenoepic.javascript.communication.outgoing.audio.DisposePlaylistComposer;
 import tech.brenoepic.javascript.communication.outgoing.audio.PlaySongComposer;
@@ -118,6 +119,7 @@ public class Main extends HabboPlugin implements EventListener {
         Emulator.getTexts().register("timed_rewards.reward_message_item", "You have the item %item_name% available!");
         Emulator.getTexts().register("timed_rewards.reward_message", "You have an available reward!");
         Emulator.getTexts().register("commands.keys.cmd_rare_value", "rare_value");
+        Emulator.getTexts().register("commands.keys.cmd_reload_rare_value", "reload_rare_value;update_rare_value;update_rarevalue");
         Emulator.getTexts().register("rarevalue.frontpage.text", "Welcome to the Rare Value! Quickly check the value of your rares!");
     }
 
@@ -125,6 +127,8 @@ public class Main extends HabboPlugin implements EventListener {
         CommandHandler.addCommand(new YoutubeCommand());
         CommandHandler.addCommand(new ReloadRewardsCommand("cmd_reload_timed_rewards", Emulator.getTexts().getValue("commands.keys.cmd_reload_timed_rewards").split(";")));
         CommandHandler.addCommand(new RareValueCommand("cmd_rare_value", Emulator.getTexts().getValue("commands.keys.cmd_rare_value").split(";")));
+        CommandHandler.addCommand(new ReloadRareValueCommand("cmd_reload_rare_value", Emulator.getTexts().getValue("commands.keys.cmd_reload_rare_value").split(";")));
+
         if (Emulator.getConfig().getBoolean("javascript.cmd.commands.enabled", true)) {
             CommandHandler.addCommand(new CmdCommand());
         }

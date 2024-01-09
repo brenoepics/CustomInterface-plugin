@@ -1,16 +1,15 @@
 package tech.brenoepic.javascript.communication;
 
+import lombok.Getter;
 import tech.brenoepic.javascript.communication.incoming.audio.*;
-import tech.brenoepic.javascript.communication.incoming.common.AcceptRewardEvent;
+import tech.brenoepic.javascript.communication.incoming.common.*;
 import tech.brenoepic.javascript.utils.JsonFactory;
 import com.eu.habbo.habbohotel.gameclients.GameClient;
 import tech.brenoepic.javascript.communication.incoming.IncomingWebMessage;
-import tech.brenoepic.javascript.communication.incoming.common.MoveAvatarEvent;
-import tech.brenoepic.javascript.communication.incoming.common.RequestCreditsEvent;
-import tech.brenoepic.javascript.communication.incoming.common.RequestSpinSlotMachineEvent;
 import gnu.trove.map.hash.THashMap;
 import lombok.extern.slf4j.Slf4j;
 
+@Getter
 @Slf4j
 public class CommunicationManager {
     private final THashMap<String, Class<? extends IncomingWebMessage>> incomingMessages;
@@ -31,14 +30,11 @@ public class CommunicationManager {
         this.registerMessage("remove_song", RemoveSongEvent.class);
         this.registerMessage("song_ended", SongEndedEvent.class);
         this.registerMessage("accept_reward", AcceptRewardEvent.class);
+        this.registerMessage("request_rare_values", RequestRareValueEvent.class);
     }
 
     public void registerMessage(String key, Class<? extends IncomingWebMessage> message) {
         this.incomingMessages.put(key, message);
-    }
-
-    public THashMap<String, Class<? extends IncomingWebMessage>> getIncomingMessages() {
-        return this.incomingMessages;
     }
 
     public void onMessage(String jsonPayload, GameClient sender) {

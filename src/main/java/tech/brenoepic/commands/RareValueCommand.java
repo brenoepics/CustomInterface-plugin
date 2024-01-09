@@ -1,4 +1,4 @@
-package tech.brenoepic.javascript.commands;
+package tech.brenoepic.commands;
 
 import tech.brenoepic.Main;
 import tech.brenoepic.javascript.communication.outgoing.common.RareValueComposer;
@@ -14,22 +14,13 @@ public class RareValueCommand extends Command {
 
     @Override
     public boolean handle(GameClient gameClient, String[] strings) throws Exception {
-        reloadRareValue();
         if (Main.getRareValueManager() == null) {
             gameClient.getHabbo().whisper("Rare Value is not enabled.");
+            return true;
         }
 
         RareValueComposer composer = Main.getRareValueManager().getBuilder(gameClient.getHabbo()).build();
         gameClient.sendResponse(JavascriptCallbackComposer.ofMessage(composer));
         return true;
-    }
-
-    private void reloadRareValue() {
-        if (Main.getRareValueManager() == null) {
-            Main.setRareValueManager(new RareValueManager());
-            return;
-        }
-
-        Main.getRareValueManager().reload();
     }
 }

@@ -15,3 +15,4 @@ INSERT INTO `achievements` (`name`, `category`, `reward_amount`, `points`) VALUE
 
 ALTER TABLE `permissions` ADD COLUMN `cmd_reload_timed_rewards` ENUM('0','1') NOT NULL DEFAULT '0';
 ALTER TABLE `permissions` ADD COLUMN `cmd_rare_value` ENUM('0','1') NOT NULL DEFAULT '1';
+ALTER TABLE `permissions` ADD COLUMN `cmd_reload_rare_value` ENUM('0','1') NOT NULL DEFAULT '0';
