@@ -4,6 +4,7 @@
       <ClaimRewardComponent v-if="rewards.open" />
     </transition>
     <RareValueComponent v-if="rarevalue.open" />
+    <Menu />
   </div>
 </template>
 
@@ -15,11 +16,13 @@ import { State } from "vuex-class";
 import { RareValuesState, RewardsState } from "@/store/types";
 import ClaimRewardComponent from "./components/ClaimRewardComponent.vue";
 import RareValueComponent from "./components/RareValueComponent.vue";
+import Menu from "./components/Menu.vue";
 
 @Component({
   components: {
     ClaimRewardComponent,
     RareValueComponent,
+    Menu
   },
 })
 export default class App extends Vue {
