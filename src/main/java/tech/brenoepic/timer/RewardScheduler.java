@@ -54,6 +54,8 @@ public class RewardScheduler extends Scheduler {
         if (habbo == null || (habbo.getHabboInfo().getCurrentRoom() == null && ignoreHotelView) || (habbo.getRoomUnit().isIdle() && ignoreIdled))
             return false;
 
+        if(item.getBadge().length() > 1 && habbo.getInventory().getBadgesComponent().hasBadge(item.getBadge())) return false;
+
         RewardAvailableComposer composer = new RewardAvailableComposer(Emulator.getConfig().getInt("hotel.auto.rewards.max_claimable", 60), item.getMessage());
         habbo.getClient().sendResponse(new JavascriptCallbackComposer(composer));
         return true;
