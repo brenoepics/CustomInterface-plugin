@@ -4,7 +4,7 @@
       <ClaimRewardComponent v-if="rewards.open" />
     </transition>
     <RareValueComponent v-if="rarevalue.open" />
-    <Menu v-if="session.loaded" />
+    <Menu />
   </div>
 </template>
 
